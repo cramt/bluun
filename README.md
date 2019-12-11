@@ -8,3 +8,5 @@ if (!(Test-Path -Path $PROFILE ))
 Add-Content -Path $PROFILE -Value ';. ("$((Get-Item $PROFILE).Directory.FullName)\bluun\index.ps1");'
 git clone https://github.com/cramt/bluun.git "$((Get-Item $PROFILE).Directory.FullName)"
 ```
+
+test
