@@ -12,7 +12,7 @@ function Start-Parallel {
 }
 
 function Restart {
-    Start-Process pwsh -ArgumentList "-noexit", "-command 'cd $(Get-Location)';;";
+    Start-Process pwsh -ArgumentList "-noexit", "-command 'cd $(Get-Location)';clear;";
     exit;
 }
 
@@ -39,14 +39,14 @@ function Set-EnvVar([string]$name, [string]$value) {
 
 function Remove-EnvVar([string]$name) {
     Set-EnvVar $name $null
-}
+} 
 
 if (!(Get-EnvVar BLUUN_CONFIG)) {
     $Global:BLUUN_CONFIG = @{
-        
+
     }
     Set-EnvVar "BLUUN_CONFIG" (ConvertTo-Json $BLUUN_CONFIG)
 }
 else {
-    $Global:BLUUN_CONFIG = ConvertTo-Json (Get-EnvVar "BLUUN_CONFIG")
+    $Global:BLUUN_CONFIG = ConvertFrom-Json (Get-EnvVar "BLUUN_CONFIG")
 }
